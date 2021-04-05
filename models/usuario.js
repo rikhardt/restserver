@@ -32,7 +32,8 @@ const UsuarioSchema = Schema({
 
 // Método que permite modificar el objeto JSON, quitamos los campos que no queremos que se visualicen en la respuesta
 UsuarioSchema.methods.toJSON = function() {
-    const {__v, password, ...usuario} = this.toObject();
+    const {__v, password, _id, ...usuario} = this.toObject();
+    usuario.uid = _id;
     return usuario;
 }
 
